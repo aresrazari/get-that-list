@@ -1,5 +1,6 @@
 const clientId = "4b0c3cb729f34a08a02ba88819d9a4cf"; // Replace with your client ID
-const code = undefined;
+const params = new URLSearchParams(window.location.search);
+const code = params.get("code");
 
 if (!code) {
     redirectToAuthCodeFlow(clientId);
@@ -18,7 +19,7 @@ async function redirectToAuthCodeFlow(clientId) {
     const params = new URLSearchParams();
     params.append("client_id", clientId);
     params.append("response_type", "code");
-    params.append("redirect_uri", "http://localhost:5173/callback");
+    params.append("redirect_uri", "https://aresrazari.github.io/get-that-list");
     params.append("scope", "user-read-private user-read-email");
     params.append("code_challenge_method", "S256");
     params.append("code_challenge", challenge);
